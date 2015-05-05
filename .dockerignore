@@ -1,0 +1,9 @@
+.git
+.node_modules
+.gitignore
+docker-build.sh
+docker-run.sh
+logs
+*.log
+Dockerfile
+.env
