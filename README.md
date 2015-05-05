@@ -1,6 +1,8 @@
 # kms-cli
-A commnadline client for aws kms in a docker container
+A command line client for aws kms in a docker container
 
 ```
-docker run -it ddffx/kms-cli:latest
+docker run -i -t \
+	   --env-file .env \
+	   kms-cli
 ``` 
