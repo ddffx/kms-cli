@@ -1,32 +1,41 @@
 #  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 
->  Command line client
+>  Command-line client for AWS KMS
 
 
-## Install
-
-```sh
-$ npm install --save kms-cli
-```
-
-
-## Usage
-
-```js
-var kmsCli = require('kms-cli');
-
-kmsCli('Rainbow');
-```
+## Install as nodejs module (global)
 
 ```sh
-$ npm install --global kms-cli
-$ kms-cli --help
+$ npm install kms-cli -g
 ```
+## Install as a docker executable container
+
+#### Create an alias for a docker run command
+
 ```docker
+docker run --rm --env-file .env ddffx/kms-cli /usr/local/bin/kms-cli "$@"
+```
+```
 alias kms-cli=./run-cli.sh
 ```
+## Usage
 
-
+```sh
+$ kms-cli --help
+```
+### Implemented Features
+#### Encrypt
+```
+kms-cli encrypt -k my_kms_key_id --pt 'My plain text'
+```
+#### Decrypt
+```
+kms-cli decrypt  --ct 'My encrypted cipher text'
+```
+#### Describe Key
+```
+kms-cli describe  -k my_kms_key_id
+```
 ## License
 
 MIT © [Deb Das]()
