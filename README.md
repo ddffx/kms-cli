@@ -25,7 +25,7 @@ $ npm install kms-cli -g
 4. Make it executable
   
   ```
-  chmod + x run-cli.sh
+  chmod +x run-cli.sh
   ```
 5. Create an alias for it
   ```
