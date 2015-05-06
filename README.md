@@ -10,14 +10,28 @@ $ npm install kms-cli -g
 ```
 ## Install as a docker executable container
 
-#### Create an alias for a docker run command
+1. Setup **.env** file in your home folder with aws credentials
+  
+  ```
+  AWS_ACCESS_KEY_ID=Your_Actual_Key_ID
+  AWS_SECRET_ACCESS_KEY=Your_Actual_Secret
+  ```
+2. Pull and run the docker container
+  
+  ```
+  docker run --rm --env-file $HOME/.env ddffx/kms-cli /usr/local/bin/kms-cli "$@"
+  ```
+3. Save it with name such as **run-cli.sh**
+4. Make it executable
+  
+  ```
+  chmod + x run-cli.sh
+  ```
+5. Create an alias for it
+  ```
+  alias kms-cli=./run-cli.sh
+  ```
 
-```docker
-docker run --rm --env-file .env ddffx/kms-cli /usr/local/bin/kms-cli "$@"
-```
-```
-alias kms-cli=./run-cli.sh
-```
 ## Usage
 
 ```sh
