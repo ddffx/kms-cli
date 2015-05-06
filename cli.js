@@ -11,7 +11,12 @@ var cli = meow({
         '  kms-cli <input command> [arguments]',
         '',
         'Example',
-        '  kms-cli encrypt --pt "my secret variable" -k "my master key refernece"'
+        '  Encrypt:',
+        '  kms-cli encrypt --pt "my secret variable" -k my_master_key_refernece_id',
+        '  Decrypt:',
+        '  kms-cli decrypt --ct "my secret variable"',
+        '  Describe Key:',
+        '  kms-cli describe -k my_master_key_refernece_id'
     ].join('\n')
 });
 if (_.isEmpty(cli.input)) {
