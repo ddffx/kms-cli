@@ -2,4 +2,4 @@
 #
 echo "docker build"
 
-docker build -t kms-cli .
+docker build -t ddffx/kms-cli .
