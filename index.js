@@ -6,6 +6,8 @@ var _ = require('lodash');
 var util = require('util');
 var debuglog = util.debuglog('KMSCLI');
 
+
+
 var KMSCLI = function(input, flags) {
     var keyId, plainText, kmsapi, b64Text, cipherText;
     debuglog(chalk.yellow('input: %j'), input);
