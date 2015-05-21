@@ -5,20 +5,19 @@
 
 ## Install as nodejs module (global)
 
-```sh
+```
 $ npm install kms-cli -g
 ```
 ## Install as a docker executable container
 Please see this project: https://github.com/ddffx/docker-kms-cli
 
-  ```
-
 ## Usage
 
-```sh
+```
 $ kms-cli --help
 ```
 ### Implemented Features
+
 #### Encrypt
 ```
 kms-cli encrypt -k my_kms_key_id --pt 'My plain text'
