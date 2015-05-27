@@ -11,6 +11,16 @@ $ npm install kms-cli -g
 ## Install as a docker executable container
 Please see this project: https://github.com/ddffx/docker-kms-cli
 
+## Setup Environment variables
+
+Pick the AWS Region your KMS key is accessible in, and export your Access Key ID and Secret Access Keys as environment variables for the script to work.  Get those secrets off the AWS console.
+
+```
+export AWS_REGION=us-east-1
+export AWS_ACCESS_KEY_ID=<your access key id>
+export AWS_SECRET_ACCESS_KEY=<your secret access key id>
+```
+
 ## Usage
 
 ```
