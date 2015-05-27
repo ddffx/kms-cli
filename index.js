@@ -22,7 +22,8 @@ var KMSCLI = function(input, flags) {
         if (keyId && plainText) {
             kmsapi.encrypt(keyId, plainText)
              .then(function(result){
-                console.log(chalk.green('Cipher text:\n %s'), result);
+                // console.log(chalk.green('Cipher text:\n %s'), result);
+                console.log(chalk.green(result));
             })
             .fail(function(err){
                 console.log(chalk.red('Error:\n %j', err));
@@ -43,7 +44,8 @@ var KMSCLI = function(input, flags) {
         	cipherText = new Buffer(b64Text, 'base64');
             kmsapi.decrypt(cipherText)
             .then(function(result){
-                console.log(chalk.green('Decrypted secret:\n %s'), result);
+                // console.log(chalk.green('Decrypted secret:\n %s'), result);
+                console.log(chalk.green(result));
             })
             .fail(function(err){
                 console.log(chalk.red('Error:\n %j'), err);
