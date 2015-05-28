@@ -11,6 +11,17 @@ var _checkEnvironment = function() {
 
 var cli = meow({
     help: [
+        'Required',
+        'Make sure required AWS parameters (AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY) are set in your environment',
+        '',
+        'Check availability',
+        '  env',
+        '',
+        ' Set them',
+        '  export AWS_REGION=< aws region where the key was created, ex: us-east-1 > ',
+        '  export AWS_ACCESS_KEY_ID=< your access key id >',
+        '  export AWS_SECRET_ACCESS_KEY=< your secret access key id >',
+        '',
         'Usage',
         '  kms-cli <input command> [arguments]',
         ' Or if you are using this as docker conatiner and didn\'t create alias kms-cli',

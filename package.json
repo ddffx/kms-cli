@@ -1,7 +1,7 @@
 {
   "name": "kms-cli",
-  "version": "0.0.5",
-  "description": "AWS KMS client",
+  "version": "0.0.6",
+  "description": "AWS KMS client for encrypting and decrypting secrets",
   "main": "index.js",
   "scripts": {
     "start": " node index.js",
