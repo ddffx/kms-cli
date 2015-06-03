@@ -10,12 +10,12 @@ var KMSHelper = require('./lib/helper');
 
 var cli = meow({
     help: [
-        'Required',
-        'Make sure:',
-        '  Either required AWS parameters (AWS_PROFILE & AWS_REGION) are set in your environment',
-        '  Or required AWS parameters (AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY) are set in your environment',
+        '!Required!',
+        '  Make sure',
+        '    AWS_REGION & AWS_PROFILE are set in your environment (preferred)',
+        '    Or AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY are set in your environment',
         '',
-        'Check availability',
+        'Check availability of env variables',
         '  env',
         '',
         ' Set them',
