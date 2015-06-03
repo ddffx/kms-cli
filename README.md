@@ -15,11 +15,21 @@ Please see this project: https://github.com/ddffx/docker-kms-cli
 
 Pick the AWS Region your KMS key is accessible in, and export your Access Key ID and Secret Access Keys as environment variables for the script to work.  Get those secrets off the AWS console.
 
+Use this (preferred), if you have aws profiles set up in your ~/.aws/credentials file
+
 ```
-export AWS_REGION=us-east-1
+export AWS_REGION=<region ex: us-east-1>
+export AWS_PROFILE=< profile_name ex: work-profile>
+```
+
+Otherwise set the env variables explicitly 
+
+```
+export AWS_REGION=<region ex: us-east-1>
 export AWS_ACCESS_KEY_ID=<your access key id>
 export AWS_SECRET_ACCESS_KEY=<your secret access key id>
 ```
+
 
 ## Usage
 

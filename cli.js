@@ -4,20 +4,22 @@
 var meow = require('meow');
 var kmsCli = require('./');
 var _ = require('lodash');
+var KMSHelper = require('./lib/helper');
 
-var _checkEnvironment = function() {
-    return process.env.AWS_REGION && process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY;
-};
+
 
 var cli = meow({
     help: [
-        'Required',
-        'Make sure required AWS parameters (AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY) are set in your environment',
+        '!Required!',
+        '  Make sure',
+        '    AWS_REGION & AWS_PROFILE are set in your environment (preferred)',
+        '    Or AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY are set in your environment',
         '',
-        'Check availability',
+        'Check availability of env variables',
         '  env',
         '',
         ' Set them',
+        '  export AWS_PROFILE=< your aws profile from .aws/credentials, ex: work-stuff > ',
         '  export AWS_REGION=< aws region where the key was created, ex: us-east-1 > ',
         '  export AWS_ACCESS_KEY_ID=< your access key id >',
         '  export AWS_SECRET_ACCESS_KEY=< your secret access key id >',
@@ -36,12 +38,20 @@ var cli = meow({
         '  kms-cli describe -k my_kms_encryption_key_id'
     ].join('\n')
 });
+var kmsHelper = new KMSHelper();
+
 if (_.isEmpty(cli.input)) {
     cli.showHelp();
 }
-if (!_checkEnvironment()) {
-    var errMsg = 'AWS parameters are missing \n Please set AWS_REGION, AWS_SECRET_ACCESS_KEY & AWS_ACCESS_KEY_ID in your environment \n';
-    console.log(errMsg);
+
+if ( !kmsHelper.checkProfileEnv() && !kmsHelper.checkSecretEnv()) {
+    var errMsg = ['AWS parameters are missing',
+        '  Please set AWS_REGION, AWS_PROFILE in your environment',
+        '  Or',
+        '  Please set AWS_REGION, AWS_SECRET_ACCESS_KEY & AWS_ACCESS_KEY_ID in your environment'
+    ];
+    // errMsg.unshift('\n');
+    console.log(errMsg.join('\n'));
     process.exit(1);
 }
 
