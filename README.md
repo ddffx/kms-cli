@@ -39,9 +39,24 @@ $ kms-cli --help
 ### Implemented Features
 
 #### Encrypt
+1. Using inputs directly from commandline
 ```
 kms-cli encrypt -k my_kms_key_id --pt 'My plain text'
 ```
+2. Using inputs from a json formatted file
+  ```
+   kms-cli encrypt --file /path/my-input-file.json
+  ```
+  Json file format:
+  ```
+   {
+	
+	"keyId" : "xxx-xxxx-xxxx-xxxx",
+	"plainText": "my secret",
+	"awsRegion": "us-east-1", // optional
+	"awsProfile": "default" // optional
+}
+  ```
 #### Decrypt
 ```
 kms-cli decrypt  --ct 'My encrypted cipher text'
