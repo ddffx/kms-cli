@@ -35,7 +35,9 @@ var cli = meow({
         '  Decrypt:',
         '  kms-cli decrypt --ct "my encrypted secret"',
         '  Describe Encryption Key:',
-        '  kms-cli describe -k my_kms_encryption_key_id'
+        '  kms-cli describe -k my_kms_encryption_key_id',
+        '  Using file input',
+        '  kms-cli encrypt --file my-input-file-path'
     ].join('\n')
 });
 var kmsHelper = new KMSHelper();
@@ -43,16 +45,18 @@ var kmsHelper = new KMSHelper();
 if (_.isEmpty(cli.input)) {
     cli.showHelp();
 }
-
-if ( !kmsHelper.checkProfileEnv() && !kmsHelper.checkSecretEnv()) {
-    var errMsg = ['AWS parameters are missing',
-        '  Please set AWS_REGION, AWS_PROFILE in your environment',
-        '  Or',
-        '  Please set AWS_REGION, AWS_SECRET_ACCESS_KEY & AWS_ACCESS_KEY_ID in your environment'
-    ];
-    // errMsg.unshift('\n');
-    console.log(errMsg.join('\n'));
-    process.exit(1);
+if (!cli.flags.file) {
+    if (!kmsHelper.checkProfileEnv() && !kmsHelper.checkSecretEnv()) {
+        var errMsg = ['AWS parameters are missing',
+            '  Please set AWS_REGION, AWS_PROFILE in your environment',
+            '  Or',
+            '  Please set AWS_REGION, AWS_SECRET_ACCESS_KEY & AWS_ACCESS_KEY_ID in your environment'
+        ];
+        // errMsg.unshift('\n');
+        console.log(errMsg.join('\n'));
+        process.exit(1);
+    }
 }
+
 
 kmsCli(cli.input, cli.flags);
