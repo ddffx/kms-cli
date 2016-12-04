@@ -1,0 +1,7 @@
+{
+	
+	"keyId" : "xxx-xxxx-xxxx-xxxx",
+	"plainText": "my secret",
+	"awsRegion": "us-east-1",
+	"awsProfile": "default"
+}
