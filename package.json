@@ -47,7 +47,7 @@
     "gulp-jscs": "^4.0.0",
     "gulp-jshint": "^2.0.4",
     "gulp-mocha": "^3.0.1",
-    "gulp-util": "^3.0.4",
+    "gulp-util": "^3.0.8",
     "mocha": "^3.2.0"
   },
   "engines": {
