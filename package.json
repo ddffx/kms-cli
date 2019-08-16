@@ -33,7 +33,7 @@
   "homepage": "https://github.com/ddffx/kms-cli#readme",
   "dependencies": {
     "async": "^2.1.4",
-    "aws-sdk": "^2.1.26",
+    "aws-sdk": "^2.512.0",
     "chalk": "^1.0.0",
     "commander": "^2.8.1",
     "lodash": "^4.17.2",
