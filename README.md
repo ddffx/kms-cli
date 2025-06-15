@@ -1,78 +1,80 @@
-#  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# Project Title
+kms-cli
 
->  Command-line client for AWS KMS
+## Description
+AWS KMS client for encrypting and decrypting secrets
 
-
-## Install as nodejs module (global)
-
-```
-$ npm install kms-cli -g
-```
-## Install as a docker executable container
-Please see this project: https://github.com/ddffx/docker-kms-cli
-
-## Setup Environment variables
-
-Pick the AWS Region your KMS key is accessible in, and export your Access Key ID and Secret Access Keys as environment variables for the script to work.  Get those secrets off the AWS console.
-
-Use this (preferred), if you have aws profiles set up in your ~/.aws/credentials file
-
-```
-export AWS_REGION=<region ex: us-east-1>
-export AWS_PROFILE=< profile_name ex: work-profile>
+## Installation
+To install dependencies, run:
+```bash
+npm install
 ```
 
-Otherwise set the env variables explicitly 
-
+This project can also be set up using Docker. Build the Docker image using:
+```bash
+./docker-build.sh
 ```
-export AWS_REGION=<region ex: us-east-1>
-export AWS_ACCESS_KEY_ID=<your access key id>
-export AWS_SECRET_ACCESS_KEY=<your secret access key id>
-```
-
 
 ## Usage
+You can run the CLI using the following commands:
 
+If you have Docker:
+```bash
+./run-cli.sh <input command> [arguments]
 ```
-$ kms-cli --help
-```
-### Implemented Features
 
-#### Encrypt
-1. Using inputs directly from commandline
+Alternatively, using Node.js directly:
+```bash
+node cli.js <input command> [arguments]
 ```
-kms-cli encrypt -k my_kms_key_id --pt 'My plain text'
+
+Or if installed globally or linked (via `npm link`):
+```bash
+kms-cli <input command> [arguments]
 ```
-2. Using inputs from a json formatted file
-  ```
-   kms-cli encrypt --file /path/my-input-file.json
-  ```
-  Json file format:
-  ```
-   {
-	
-	"keyId" : "xxx-xxxx-xxxx-xxxx",
-	"plainText": "my secret",
-	"awsRegion": "us-east-1", // optional
-	"awsProfile": "default" // optional
-}
-  ```
-#### Decrypt
+
+**Important Environment Variables:**
+Make sure the following environment variables are set:
+- `AWS_REGION`: The AWS region where the KMS key was created (e.g., `us-east-1`).
+- `AWS_PROFILE`: Your AWS profile from `~/.aws/credentials` (e.g., `work-stuff`).
+Alternatively, you can set:
+- `AWS_REGION`
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+
+**Commands and Arguments:**
+
+*   **Encrypt:**
+    ```bash
+    kms-cli encrypt --pt "my secret" -k <your_kms_encryption_key_id>
+    ```
+    *   `--pt` or `--plainText`: The secret to encrypt.
+    *   `-k` or `--keyId`: Your AWS KMS encryption key ID.
+    *   `--file <file-path>`: Encrypt content from a JSON file. The file should contain `keyId`, `plainText`, and optionally `awsRegion` and `awsProfile`.
+
+*   **Decrypt:**
+    ```bash
+    kms-cli decrypt --ct "my encrypted secret"
+    ```
+    *   `--ct` or `--cipherText`: The encrypted secret (base64 encoded).
+
+*   **Describe Encryption Key:**
+    ```bash
+    kms-cli describe -k <your_kms_encryption_key_id>
+    ```
+    *   `-k` or `--keyId`: Your AWS KMS encryption key ID.
+
+
+For more detailed help, run:
+```bash
+kms-cli --help
 ```
-kms-cli decrypt  --ct 'My encrypted cipher text'
+or
+```bash
+./run-cli.sh --help
 ```
-#### Describe Key
-```
-kms-cli describe  -k my_kms_key_id
-```
+
+## Contributing
+
 ## License
-
-MIT © [Deb Das]()
-
-
-[npm-image]: https://badge.fury.io/js/kms-cli.svg
-[npm-url]: https://npmjs.org/package/kms-cli
-[travis-image]: https://travis-ci.org/ddffx/kms-cli.svg?branch=master
-[travis-url]: https://travis-ci.org/ddffx/kms-cli
-[daviddm-image]: https://david-dm.org/ddffx/kms-cli.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/ddffx/kms-cli
+MIT
