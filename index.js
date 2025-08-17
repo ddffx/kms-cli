@@ -65,7 +65,7 @@ var KMSCLI = function(input, flags) {
         }
     } else if (input[0] === 'decrypt') {
         if (b64Text) {
-            cipherText = new Buffer(b64Text, 'base64');
+            cipherText = Buffer.from(b64Text, 'base64');
             kmsapi.decrypt(cipherText)
                 .then(function(result) {
                     // console.log(chalk.green('Decrypted secret:\n %s'), result);
